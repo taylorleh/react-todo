@@ -16,6 +16,14 @@ export class App {
     this.notify();
   }
 
+  remove(id) {
+    if(!id) return;
+    this.todos = this.todos.filter(item => {
+      return item.id !== id;
+    });
+    this.notify();
+  }
+
   notify() {
     this.observers.forEach(cb => cb());
   }
