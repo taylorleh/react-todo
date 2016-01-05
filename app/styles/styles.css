@@ -19,6 +19,10 @@
   float: right;
 }
 
+.pull-left {
+  float: left;
+}
+
 .bordered-list li {
   border-bottom: 1px solid black;
   border-right: 1px solid black;
@@ -32,4 +36,9 @@
 
 ul.default {
   list-style-type: none;
+}
+
+.complete {
+  text-decoration: line-through;
+  opacity: .4;
 }
