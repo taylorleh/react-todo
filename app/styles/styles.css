@@ -10,3 +10,26 @@
   padding: 2em 3em;
   text-align: center;
 }
+
+.no-border {
+  border: none;
+}
+
+.pull-right {
+  float: right;
+}
+
+.bordered-list li {
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  padding: .3em;
+}
+
+.bordered-list li:first-child {
+  border-top: 1px solid black;
+}
+
+ul.default {
+  list-style-type: none;
+}
