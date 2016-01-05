@@ -1,4 +1,5 @@
 import React from 'react';
+import TodoItem from './todoitem.jsx';
 
 
 export default React.createClass({
@@ -14,10 +15,22 @@ export default React.createClass({
 
   addTodo() {
     this.props.model.add(this.state.note);
+    this.setState({note: ''});
   },
 
-  eachNote(msg) {
-    
+  removeToDo(item) {
+    if(item && item.id) {
+      this.props.model.remove(item.id);
+    }
+  },
+
+  eachNote(item, ind) {
+    return (
+      <TodoItem
+        key={ind}
+        data={item}
+        remove={this.removeToDo.bind(null, item)} />
+    );
   },
 
   render() {
@@ -26,7 +39,7 @@ export default React.createClass({
       <div className="container border-curved">
       <input type="text" value={this.state.note} onChange={this.onChange} />
       <button onClick={this.addTodo}>Add</button>
-      <ul>{ todos.map(this.eachNote) }</ul>
+      <ul className="bordered-list default">{ todos.map(this.eachNote) }</ul>
       </div>
     );
   }
