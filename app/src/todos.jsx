@@ -25,6 +25,10 @@ export default React.createClass({
     }
   },
 
+  complete(item) {
+    this.props.model.complete(item.id);
+  },
+
   keyDown(event) {
     if(event.which !== 13) return;
     this.addTodo();
@@ -35,9 +39,12 @@ export default React.createClass({
       <TodoItem
         key={ind}
         data={item}
-        remove={this.removeToDo.bind(null, item)} />
+        remove={this.removeToDo.bind(null, item)}
+        complete={this.complete.bind(null, item)} />
     );
   },
+
+  
 
   render() {
     var todos = this.props.model.todos;

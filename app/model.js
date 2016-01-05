@@ -24,6 +24,17 @@ export class App {
     this.notify();
   }
 
+  complete(id) {
+    this.todos = this.todos.map(item => {
+      if(item.id === id) {
+        item.completed = !item.completed;
+      }
+      return item;
+    });
+
+    this.notify();
+  }
+
   notify() {
     this.observers.forEach(cb => cb());
   }

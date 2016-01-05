@@ -14,9 +14,14 @@ export default React.createClass({
 
   render() {
     var rmvbtn = this.removeButton();
+    var classes = "";
+    if(this.props.data.completed) {
+      classes += 'complete';
+    }
 
     return (
-      <li>
+      <li className={classes}>
+        <input className="pull-left" type="checkbox" onChange={this.props.complete} />
         {this.props.data.msg}
         {rmvbtn}
       </li>
