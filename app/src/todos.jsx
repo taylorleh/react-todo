@@ -14,11 +14,13 @@ export default React.createClass({
     this.setState({ note: val });
   },
 
+  // adds a todo to the model... invoked from child component
   addTodo() {
     this.props.model.add(this.state.note);
     this.setState({note: ''});
   },
 
+  // removes a todo from the model... invoked from child component
   removeToDo(item) {
     if(item && item.id) {
       this.props.model.remove(item.id);
@@ -29,11 +31,13 @@ export default React.createClass({
     this.props.model.complete(item.id);
   },
 
+  // focuses input field and adds todo if enter ket
   keyDown(event) {
     if(event.which !== 13) return;
     this.addTodo();
   },
 
+  // invoked by render method to initialize list item component
   eachNote(item, ind) {
     return (
       <TodoItem
@@ -43,8 +47,6 @@ export default React.createClass({
         complete={this.complete.bind(null, item)} />
     );
   },
-
-  
 
   render() {
     var todos = this.props.model.todos;
